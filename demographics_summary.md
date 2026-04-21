@@ -304,6 +304,40 @@ but is outside the BOOMERS Phase 1 scope.
   pairs with $c-k<21$ are dropped.  This yields a smooth
   $\Pr(q \mid m)$ at the 2-year model-age grid.
 
+**Internal-consistency caveats** [coauthor query].
+
+Two source-data mismatches are worth flagging:
+
+1. **YARP window mismatch.**  $\pi_m$ uses the Census `Arrived 2011–2020`
+   slice, but $\Pr(q\mid m)$ is computed from the *entire* immigrant
+   stock (every YARP slice except Not stated / Not applicable / Total).
+   Ideally we would restrict the education query to the same 10-year
+   arrival window, producing a YARP-filtered $\Pr(q \mid m)$.  That is
+   not achievable in TableBuilder Basic: YARP / YARRP lives in the
+   *cultural diversity* dataset and QALLP lives in
+   *employment, income and education*, and TableBuilder Basic does
+   **not support joint queries across themed datasets**.  The joint
+   cross-tab YARP × AGE × BPL × QALLP requires TableBuilder Pro
+   (institutional licence) or microdata.
+
+2. **Post-arrival skill acquisition.**  QALLP reports the respondent's
+   2021 qualification, not the qualification they held at arrival.  An
+   immigrant who entered on a Student visa aged 22 and completed a
+   bachelor degree by 27 appears in our Pr(q|m) as a $q=3$ entry at
+   arrival age 22, even though at the actual border crossing they held
+   no post-school qualification.  The BOOMERS model assumes
+   time-invariant skill $q$ over the life cycle, so this bias
+   *over-weights* $q=3$ for young-arrival cohorts.
+
+These two biases partially offset: (1) survivor bias in the aggregate
+stock inflates long-stay high-skill shares; (2) on-shore education
+inflates young high-skill shares.  The points-system tightening since
+~2011 pushes in the opposite direction (recent arrivals are *more*
+skilled than the historical average).  Net sign is unclear without
+a proper YARP × QALLP cross-tab; we treat $\Pr(q \mid m)$ as a
+first-order estimate and revisit under Phase 2 via microdata or
+TableBuilder Pro.
+
 ![Immigrant inflow psi](fig/02_psi_m.png)
 *Figure 3 — Calibrated immigrant inflow $\psi_{m,q}$ on the BOOMERS model
 2-year age grid (i.e. exactly the array fed into the forward recursion).
