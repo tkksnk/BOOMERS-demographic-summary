@@ -202,6 +202,28 @@ For Phase 1 we **include WHV** in $\bar N$.  Reasons:
 toward older ages because WHV is concentrated at $m \in [21, 30]$) to
 check that core BOOMERS results on $p$ and $p / y$ are not WHV-driven.
 
+**Is on-shore visa transition double-counted?** [coauthor query]
+
+No.  ABS NOM counts **border movements**, not visa grants (ABS Cat
+3407.0 methodology, footnote d):
+
+> *The visa information in this table represents the number of visas
+> based on the visa type at the time of a traveller's specific
+> movement... The number of visas here should not be confused with
+> information on the number of visas granted by the Department of Home
+> Affairs.*
+
+A WHV holder who stays in Australia and converts on-shore to a PR visa
+generates **one NOM arrival** (the WHV border crossing) and **zero
+additional NOM arrivals** for the PR grant.  The only way the same
+person could appear twice in our arrivals series is by physically
+leaving and re-entering; in that case a NOM departure (and thus a
+contribution to the $\gamma$ hazard) sits between the two arrivals, so
+the steady-state stock contribution is still +1 per person.
+
+Because our $\psi_{m,q}$ is built from ABS NOM (not DHA visa-grant
+counts), this channel of double-counting does not apply.
+
 **Window-choice note**.  $\bar N$ is averaged over **2011–2020** to match
 the Census YARP "Arrived 2011–2020" bucket used to calibrate the shape
 $\pi_m$ in §2.4.b — same time window in both the level and the shape of
